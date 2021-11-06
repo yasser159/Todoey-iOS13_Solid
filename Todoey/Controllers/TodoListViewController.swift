@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class TodoListViewController: UITableViewController {
     //Array contains items that will show up on the screen
@@ -90,7 +91,9 @@ class TodoListViewController: UITableViewController {
         let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
             //what will happen when the user clicks the add Item button on our UIAlert
             
-            let newItem = Item()
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            
+            let newItem = Item(context: context)
             newItem.title = textField.text!
             
             //print("textField: ", textField.text)
