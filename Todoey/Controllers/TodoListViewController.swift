@@ -10,24 +10,17 @@ import UIKit
 import CoreData
 
 class TodoListViewController: UITableViewController {
-    //Array contains items that will show up on the screen
+
     var itemArray = [Item]()
     
-//    let dataFilePath =  FileManager.default.urls(for: .documentDirectory,
-//        in: .userDomainMask).first?.appendingPathComponent("Items.plist")
-    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
-    
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        print(FileManager.default.urls(for: .documentDirectory,
-//              in: .userDomainMask))
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
-        //searchBar.delegate = self
         
         loadItems()
     
@@ -141,14 +134,16 @@ class TodoListViewController: UITableViewController {
         self.tableView.reloadData()
     }
 
-    func loadItems(){
-        let request : NSFetchRequest<Item> = Item.fetchRequest()
-        
+    func loadItems(with request: NSFetchRequest<Item> = Item.fetchRequest()){
+                
         do {
             itemArray = try context.fetch(request)
         } catch {
             print("Error fetching data from context \(error)")
         }
+        
+        tableView.reloadData()
+        
     }
 
 }
@@ -157,9 +152,14 @@ class TodoListViewController: UITableViewController {
 extension TodoListViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
         let request : NSFetchRequest<Item> = Item.fetchRequest()
         
-        print(searchBar.text!)
+        request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
+        
+        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        
+        loadItems(with: request)
         
     }
 }
