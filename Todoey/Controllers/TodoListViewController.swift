@@ -21,7 +21,6 @@ class TodoListViewController: UITableViewController {
         
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
-        
         loadItems()
     
     }
@@ -97,7 +96,6 @@ class TodoListViewController: UITableViewController {
         let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
             //what will happen when the user clicks the add Item button on our UIAlert
             
-            
             let newItem = Item(context: self.context)
             newItem.title = textField.text!
             newItem.done = false
@@ -106,10 +104,7 @@ class TodoListViewController: UITableViewController {
             
             self.saveItems()
             
-//            print("textField: ", textField.text)
-//            self.itemArray.append(textField.text!)
-//            self.defaults.set(self.itemArray, forKey: "TodoListArray")
-//            self.tableView.reloadData()
+            self.tableView.reloadData()
             
         }
         
@@ -143,7 +138,6 @@ class TodoListViewController: UITableViewController {
         }
         
         tableView.reloadData()
-        
     }
 
 }
@@ -162,4 +156,16 @@ extension TodoListViewController: UISearchBarDelegate {
         loadItems(with: request)
         
     }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0 {
+            loadItems()
+            
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+            
+        }
+    }
+    
 }
