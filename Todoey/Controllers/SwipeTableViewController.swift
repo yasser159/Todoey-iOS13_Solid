@@ -4,8 +4,12 @@ import SwipeCellKit
 class SwipeTableViewController: UITableViewController, SwipeTableViewCellDelegate {
 
     override func viewDidLoad() {
+        
+        var cell: UITableViewCell?
+        
         super.viewDidLoad()
 
+        tableView.rowHeight = 80.0
     }
     
     

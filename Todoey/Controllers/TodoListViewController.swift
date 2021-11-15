@@ -18,8 +18,6 @@ class TodoListViewController: SwipeTableViewController {
         //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
         loadItems()
-        tableView.rowHeight = 80.0
-    
     }
     
     
@@ -34,7 +32,7 @@ class TodoListViewController: SwipeTableViewController {
     //Function ???
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
         if let item = todoItems?[indexPath.row]{
             cell.textLabel?.text = item .title
@@ -133,19 +131,6 @@ class TodoListViewController: SwipeTableViewController {
     
     override func updateModel(at indexPath: IndexPath) {
 
-//        if let categoryForDeletion = self.categories? [indexPath.row]{
-//            do{
-//                try self.realm.write {
-//                    self.realm.delete(categoryForDeletion)
-//                }
-//            } catch {
-//               print("Error deleting category, \(error)")
-//            }
-//        }
-        
-        print("Delete Item")
-        
-        
         if let item = self.todoItems? [indexPath.row] {
             do {
                 try self.realm.write {
