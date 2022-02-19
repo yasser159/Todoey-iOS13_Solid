@@ -102,6 +102,7 @@
 		EB2BE4ED239524DB00FB933B = {
 			isa = PBXGroup;
 			children = (
+				33D452C9272791AF0032563B /* Views */,
 				EB2BE4F8239524DB00FB933B /* Todoey */,
 				EB2BE4F7239524DB00FB933B /* Products */,
 				5A36285B4DB42A5078760F03 /* Pods */,
@@ -124,7 +125,6 @@
 				EB2BE4F9239524DB00FB933B /* AppDelegate.swift */,
 				33D452C6272791720032563B /* Controllers */,
 				33D452C82727919B0032563B /* Data Model */,
-				33D452C9272791AF0032563B /* Views */,
 				33D452CA272792F00032563B /* Supporting Files */,
 				EB2BE504239524DC00FB933B /* LaunchScreen.storyboard */,
 				EB2BE502239524DC00FB933B /* Assets.xcassets */,
