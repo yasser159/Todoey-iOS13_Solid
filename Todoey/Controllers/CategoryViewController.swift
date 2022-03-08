@@ -31,6 +31,8 @@ class CategoryViewController: SwipeTableViewController {
     //MARK: - TableView Datasource Methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection
         section: Int) -> Int {
+        
+        //if categories is not null, return the number, otherwise return 1
         return categories?.count ?? 1
     }
     
@@ -41,6 +43,8 @@ class CategoryViewController: SwipeTableViewController {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         if let category = categories? [indexPath.row] {
             
+            
+            //if not null return text,otherwise return no category aded yet
         cell.textLabel?.text = category.name ?? "NO Categories Added Yet"
        
             
