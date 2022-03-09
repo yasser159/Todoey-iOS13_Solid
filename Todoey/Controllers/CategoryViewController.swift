@@ -55,6 +55,8 @@ class CategoryViewController: SwipeTableViewController {
            
         cell.backgroundColor = categoryColour
         cell.textLabel?.textColor = ContrastColorOf(categoryColour, returnFlat: true)
+        
+        tableView.rowHeight = 80.0
         }
         
         return cell

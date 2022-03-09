@@ -41,7 +41,7 @@ class TodoListViewController: SwipeTableViewController {
                 navBar.tintColor = ContrastColorOf(navBarColour, returnFlat: true)
                 navBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : ContrastColorOf(navBarColour, returnFlat: true)]
                 
-                searchBar.barTintColor = navBarColour
+                //searchBar.barTintColor = navBarColour
             }
         }
     }
@@ -78,6 +78,8 @@ class TodoListViewController: SwipeTableViewController {
     if let colour = UIColor(hexString: selectedCategory?.bgColor ?? "1d9bf6")?.darken(byPercentage: CGFloat(indexPath.row) / CGFloat(todoItems!.count)) {
          cell.backgroundColor = colour
          cell.textLabel?.textColor = ContrastColorOf(colour, returnFlat: true)
+        tableView.rowHeight = 250.0 //80.0
+        tableView.separatorStyle = .none
         }
             
         return cell
